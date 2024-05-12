@@ -95,13 +95,18 @@ document.write(
 
 // bài 4
 var numbers = [2, 5, 1, 9, 8, 10];
-var sortNumbers = [];
-for (var index in numbers) {
-  if (numbers[index] > numbers[index + 1]) {
-    var temp = numbers[index];
-    numbers[index] = numbers[index + 1];
-    numbers[index + 1] = temp;
-    sortNumbers[sortNumbers.length] = numbers[index];
+
+function insertionSort(numbers) {
+  for (let i = 1; i < numbers.length; i++) {
+    let key = numbers[i];
+    let j = i - 1;
+    while (j >= 0 && numbers[j] > key) {
+      numbers[j + 1] = numbers[j];
+      j = j - 1;
+    }
+    numbers[j + 1] = key;
   }
+  return numbers;
 }
-console.log(sortNumbers);
+
+console.log(insertionSort(numbers));
